@@ -38,14 +38,11 @@ fetch('https://development-korea-seoul.s3.ap-northeast-2.amazonaws.com/country_c
 
 db.collection("quizzes").orderBy("time", "asc").get().then((quesrySnapshot) => {
   quesrySnapshot.forEach((doc) => {
-    // console.log(`${doc.id} => ${doc.data().answer}`);
     insert_data(doc.data(), doc.id);
   })
 })
 
-function insert_data(data, _id, rowCount) {
-  console.log(data);
-  console.log(_id);
+function insert_data(data, _id) {
   var row = document.getElementById("quiz-table").insertRow(4);
   var cell1 = row.insertCell(0),
       cell2 = row.insertCell(1),
